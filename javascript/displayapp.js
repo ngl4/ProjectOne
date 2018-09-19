@@ -1,3 +1,8 @@
+//Access to Local Storage 
+var array = JSON.parse(localStorage.getItem("searchItems"));
+console.log(array);
+console.log("First item:" + array[0], "Second item:" + array[1], "Third item:" + array[2]);
+
 //api key
 
 var apiKey = "ad9411943fc77cb3dcb9f5c1f72654de";
@@ -33,6 +38,20 @@ var queryURLBase =
 
 //track number of recipe
 recipeCounter = 0;
+
+
+
+searchTerm =  array[0];
+
+numTime = parseInt(array[1]);
+
+numResults = array[2];
+
+var newURL = queryURLBase + "&q=" + searchTerm;
+
+runQuery(parseInt(numResults), newURL);
+
+
 
 function runQuery(numSearch, queryURL) {
   $.ajax({
@@ -96,11 +115,16 @@ function runQuery(numSearch, queryURL) {
       displayVideo2.attr("id","player2-"+i);
       displayVideo2.addClass("m-2");
 
+      // var displayVideo3 = $("<div>");
+      // displayVideo3.attr("id","player3-"+i);
+      // displayVideo3.addClass("m-2");
+
       var videoSection = $("<div>");
       videoSection.attr("id", "videoSection-" + i);
       videoSection.append(displayVideo);
       videoSection.append(displayVideo1);
       videoSection.append(displayVideo2);
+      // videoSection.append(displayVideo3);
 
       //instruction Button
       var instructionBtn = $("<button>");
@@ -163,33 +187,7 @@ function runQuery(numSearch, queryURL) {
     });
   });
 }
-var searchItems = [];
 
-$("#searchBtn").on("click", function() {
-  chosenSearch = [];
-
-  searchTerm = $("#searchTerm")
-    .val()
-    .trim();
-
-  searchItems.push(searchTerm);
-
-  numTime = $("#numTime").val();
-
-  searchItems.push(numTime);
-
-  numResults = $("#numResults").val();
-
-  searchItems.push(numResults);
-
-  localStorage.setItem("searchItems", JSON.stringify(searchItems));
-
-  var newURL = queryURLBase + "&q=" + searchTerm;
-
-  runQuery(parseInt(numResults), newURL);
-
-  return true;
-});
 
 $(document).on("click", ".instructionBtn", function() {
   var url = $(this).attr("src");
