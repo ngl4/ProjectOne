@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Wegmans API</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+    crossorigin="anonymous">
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <br>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <h1 class="text-center">Wegmans API Test</h1>
+    </div>
+    <div class="row">
+
+      <div class="col-lg-12">
+            <div id="api-response"></div>>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+
+  <!-- LINK TO FIREBASE GOES HERE -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+  <!-- Script -->
+  <script>
+
+// FROM WALMART API
+
+        var apiKey = "krfbgsufchxe6gxvzwhdxgvj";
+        var searchTerm = "banana";
+        // Here we are building the URL we need to query the database
+        var queryURL = "https://api.wegmans.io/product/products/search?criteria="+searchTerm+"Product-Subscription-Key="+apiKey;
+        // We then created an AJAX call
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function(response) {
+            console.log(response);
+        })
+
+// WEGMANS API EXAMPLE
+
+        $(function() {
+        var params = {
+            // Request parameters
+        };
+
+        $.ajax({
+            url: "https://api.wegmans.io/product/products/search?criteria={criteria}&" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("Product-Subscription-Key","{subscription key}");
+            },
+            type: "GET",
+            // Request body
+            data: "{body}",
+        })
+        .done(function(data) {
+            alert("success");
+        })
+        .fail(function() {
+            alert("error");
+        });
+    });
+  </script>
+
+</body>
+
+</html>
