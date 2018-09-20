@@ -115,16 +115,41 @@ function runQuery(numSearch, queryURL) {
       displayVideo2.attr("id","player2-"+i);
       displayVideo2.addClass("m-2");
 
-      // var displayVideo3 = $("<div>");
-      // displayVideo3.attr("id","player3-"+i);
-      // displayVideo3.addClass("m-2");
-
       var videoSection = $("<div>");
       videoSection.attr("id", "videoSection-" + i);
       videoSection.append(displayVideo);
       videoSection.append(displayVideo1);
       videoSection.append(displayVideo2);
-      // videoSection.append(displayVideo3);
+      
+
+      //*********Modal display code for videoSection****** */
+
+      var modal_Div = $("<div>");
+      modal_Div.addClass("modal modal-fixed-footer");
+      modal_Div.attr("id", "modal-" + i);
+      var modal_content = $("<div>");
+      modal_content.addClass("modal-content");
+      var modal_title = $("<h4>");
+      modal_title.text(element.label.toUpperCase());
+      var modal_subtext = $("<p>");
+      modal_subtext.text("Sample Videos Related to this Recipe");
+
+      modal_content.append(modal_title);
+      modal_content.append(modal_subtext);
+      modal_content.append(videoSection);
+      modal_Div.append(modal_content);
+
+      var modal_footer = $("<div>");
+      modal_footer.addClass("modal-footer");
+      var modal_close = $("<a>");
+      modal_close.attr("href", "#!");
+      modal_close.addClass("modal-close waves-effect waves-green btn-flat");
+      modal_close.text("Close");
+
+      modal_footer.append(modal_close);
+      modal_Div.append(modal_footer);
+      $("#modal").append(modal_Div);
+      $(".modal").modal();
 
       //instruction Button
       var instructionBtn = $("<button>");
@@ -136,8 +161,11 @@ function runQuery(numSearch, queryURL) {
       var youtubeBtn = $("<button>");
       youtubeBtn.attr("name", element.label);
       youtubeBtn.attr("index", i);
+      youtubeBtn.attr("data-target", "modal-" + i);
       youtubeBtn.text("Show Sample Videos");
-      youtubeBtn.addClass("videoBtn w-25 m-3");
+      youtubeBtn.addClass(
+        "videoBtn waves-effect waves-light btn modal-trigger"
+      );
 
       //Save to collection Button
       var saveBtn = $("<button>");
@@ -182,7 +210,6 @@ function runQuery(numSearch, queryURL) {
         "<h5> Total Calories/person: " + calories + "</h5>"
       );
       $("#recipe-" + i).append(buttonSection);
-      $("#recipe-" + i).append(videoSection);
       
     });
   });
@@ -278,16 +305,6 @@ $(document).on("click", ".videoBtn", function() {
         });
       }
 
-      // function onYouTubeIframeAPIReady3() {
-      //   player3 = new YT.Player("player3-"+index, {
-      //     height: "150",
-      //     width: "300",
-      //     videoId: videoIdArray[3],
-      //     events: {
-      //       'onReady': onPlayerReady
-      //     }
-      //   });
-      // }
 
       // The API will call this function when the video player is ready.
       var done = false;
@@ -301,7 +318,7 @@ $(document).on("click", ".videoBtn", function() {
       onYouTubeIframeAPIReady();
       onYouTubeIframeAPIReady1();
       onYouTubeIframeAPIReady2();
-      // onYouTubeIframeAPIReady3()
+      
     })
     .fail(function(err) {
       throw err;
