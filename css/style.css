@@ -54,6 +54,7 @@ p {
 
 footer.page-footer {
   margin: 0;
+  padding-bottom: 5px;
 }
 
 #bg1 {
@@ -69,3 +70,7 @@ footer.page-footer {
 #recipeCard {
   margin-right: 50px;
 }
+
+
+
+
