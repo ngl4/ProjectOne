@@ -1,7 +1,7 @@
 //API key for Recipe Search API
 
-var apiKey = "ad9411943fc77cb3dcb9f5c1f72654de";
-var apiId = "b3505691";
+var apiKey = "68d16f10adfdfaed91c7325de496ce48";
+var apiId = "7f4b800a";
 
 //Declare variables
 
@@ -32,6 +32,13 @@ var queryURLBase =
   "&app_key=" +
   apiKey;
 
+//Show Index Banner and Hide Results Banner when loading page 
+$( document ).ready(function() {
+$("#index-banner-Index").show();
+$("#form-container").show();
+$("#index-banner-results").hide();
+});
+
 //Get the data from the Recipe Search API
 function runQuery(numSearch, queryURL) {
   $.ajax({
@@ -39,6 +46,7 @@ function runQuery(numSearch, queryURL) {
     method: "GET"
   }).done(function(response) {
     $("#displayResults").empty();
+    console.log(response);
 
     //Logic for cook/prep time
     if (parseInt(numTime) === 30) {
@@ -82,7 +90,7 @@ function runQuery(numSearch, queryURL) {
       //Display Card Section for Each Recipe Result
       var displaySection = $("<div>");
       displaySection.attr("id", "recipe-" + i);
-      displaySection.addClass("card p-3 m-2");
+      displaySection.addClass("card p-3 m-2 w-100 h-100");
       $("#displayResults").append(displaySection);
 
       //Display Videos of Each Recipe Result
@@ -104,18 +112,50 @@ function runQuery(numSearch, queryURL) {
       videoSection.append(displayVideo1);
       videoSection.append(displayVideo2);
 
+      //Modal display code for videoSection
+      var modal_Div = $("<div>");
+      modal_Div.addClass("modal modal-fixed-footer");
+      modal_Div.attr("id", "modal-" + i);
+      var modal_content = $("<div>");
+      modal_content.addClass("modal-content");
+      var modal_title = $("<h4>");
+      modal_title.text(element.label.toUpperCase());
+      var modal_subtext = $("<p>");
+      modal_subtext.text("Sample Videos Related to this Recipe");
+
+      modal_content.append(modal_title);
+      modal_content.append(modal_subtext);
+      modal_content.append(videoSection);
+      modal_Div.append(modal_content);
+
+      var modal_footer = $("<div>");
+      modal_footer.addClass("modal-footer");
+      var modal_close = $("<a>");
+      modal_close.attr("href", "#!");
+      modal_close.addClass("modal-close waves-effect waves-green btn-flat");
+      modal_close.text("Close");
+
+      modal_footer.append(modal_close);
+      modal_Div.append(modal_footer);
+      $("#modal").append(modal_Div);
+      $(".modal").modal();
+
+
       //instruction Button
       var instructionBtn = $("<button>");
       instructionBtn.attr("src", element.url);
       instructionBtn.text("See Instructions");
-      instructionBtn.addClass("instructionBtn w-25 m-3");
+      instructionBtn.addClass("instructionBtn w-25 m-3 waves-effect waves-light btn");
 
       //Youtube video Button
       var youtubeBtn = $("<button>");
       youtubeBtn.attr("name", element.label);
       youtubeBtn.attr("index", i);
+      youtubeBtn.attr("data-target", "modal-" + i);
       youtubeBtn.text("Show Sample Videos");
-      youtubeBtn.addClass("videoBtn w-25 m-3");
+      youtubeBtn.addClass(
+        "videoBtn waves-effect waves-light btn modal-trigger"
+      );
 
       //Save to My Recipes Button
       var saveBtn = $("<button>");
@@ -126,6 +166,7 @@ function runQuery(numSearch, queryURL) {
       saveBtn.attr("data-dietLabel", element.dietLabels);
       saveBtn.attr("data-healthLabel", element.healthLabels);
       saveBtn.attr("data-url", element.url);
+      saveBtn.attr("data-totalTime", element.totalTime);
       saveBtn.text("Save to Collections");
       saveBtn.addClass("saveBtn w-25 m-3");
 
@@ -157,8 +198,11 @@ function runQuery(numSearch, queryURL) {
       $("#recipe-" + i).append(
         "<h5> Total Calories/person: " + calories + "</h5>"
       );
+      $("#recipe-" + i).append(
+        "<h5> Total Cook/Prep Time: " + element.totalTime + " mins </h5>"
+      );
       $("#recipe-" + i).append(buttonSection);
-      $("#recipe-" + i).append(videoSection);
+     
     });
   });
 }
@@ -166,14 +210,22 @@ function runQuery(numSearch, queryURL) {
 //Search Recipe Button
 $("#searchBtn").on("click", function() {
   chosenSearch = [];
+  searchItems = [];
 
-  searchTerm = $("#searchTerm")
-    .val()
-    .trim();
+  event.preventDefault();
+
+  console.log(typeof searchTerm);
+  console.log(searchTerm);
+
+  searchTerm = $("#searchTerm").val().trim();
   //push all the searchTerm string to the searchItems Array
   searchItems.push(searchTerm);
 
+  console.log(typeof searchTerm);
+  console.log(searchTerm);
+
   numTime = $("#numTime").val();
+  console.log(numTime);
 
   searchItems.push(numTime);
 
@@ -186,8 +238,13 @@ $("#searchBtn").on("click", function() {
   var newURL = queryURLBase + "&q=" + searchTerm;
   //Run this function to GET the Recipe Search API data
   runQuery(parseInt(numResults), newURL);
-  //Allow default behavior in order to take the browser to a new page
-  return true;
+  
+  //Using JQuery to hide and show results info
+  $("#form-container").hide();
+  $("#index-banner-Index").hide();
+  $("#index-banner-results").show();
+  $("#navbar").attr("class","red");
+
 });
 
 //Instruction Button opens up a new page in a new window
@@ -203,6 +260,8 @@ $(document).on("click", ".saveBtn", function() {
   var calories = $(this).attr("data-calories");
   var dietLabel = $(this).attr("data-dietLabel");
   var healthLabel = $(this).attr("data-healthLabel");
+  var ingredientLines= $(this).attr("data-ingredientLines")
+  var totalTime = $(this).attr("data-totalTime");
   var url = $(this).attr("data-url");
   //push data to Firebase database
   database.ref().push({
@@ -211,6 +270,8 @@ $(document).on("click", ".saveBtn", function() {
     calories: calories,
     dietLabel: dietLabel,
     healthLabel: healthLabel,
+    ingredientLines: ingredientLines,
+    totalTime: totalTime,
     url: url,
     dateAdded: firebase.database.ServerValue.TIMESTAMP
   });

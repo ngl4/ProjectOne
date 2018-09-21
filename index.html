@@ -30,7 +30,7 @@
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- firebase cdn -->
+  <!-- firebase cdn -->
   <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
 
   <!-- CSS  -->
@@ -42,74 +42,114 @@
 </head>
 
 
-<!----- Begin Page ----->
+<!--- Begin Page -->
 
 <body>
 
   <!-- Nav Bar, currently not working streched out -->
-  <nav class="green" role="navigation">
+  <nav id="navbar" class="green" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="index.html" class="brand-logo">REC<img src="assets/fork.png">PEZE</a>
+      <a id="logo-container" href="index.html" class="brand-logo">REC
+        <img src="assets/fork.png">PEZE</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="recipes.html">Recipes</a></li>
-        <li><a href="saved.html">My Recipes</a></li>
-        <li><a href="nearme.html">Stores Near Me</a></li>
+        <!-- <li>
+          <a href="recipes.html">Recipes</a>
+        </li> -->
+        <li>
+          <a href="saved.html">My Recipes</a>
+        </li>
+        <li>
+          <a href="nearme.html">Stores Near Me</a>
+        </li>
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
-          <li><a href="index.html">Home</a></li>
-        <li><a href="recipes.html">Recipes</a></li>
-        <li><a href="saved.html">My Recipes</a></li>
-        <li><a href="nearme.html">Stores Near Me</a></li>
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <!-- <li>
+          <a href="recipes.html">Recipes</a>
+        </li> -->
+        <li>
+          <a href="saved.html">My Recipes</a>
+        </li>
+        <li>
+          <a href="nearme.html">Stores Near Me</a>
+        </li>
       </ul>
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
     </div>
   </nav>
 
-  <!-- Top Banner -->
-  <div id="index-banner" class="parallax-container">
+  <!-- Top Banner Index Page-->
+  <div id="index-banner-Index" class="parallax-container">
     <div class="section no-pad-bot">
       <div class="container">
-        <br><br>
-        <h1 class="header center green-text">REC<img src="assets/fork.png">PEZE</h1>
+        <br>
+        <br>
+        <h1 class="header center green-text">REC
+          <img src="assets/fork.png">PEZE</h1>
         <h4 class="header center black-text">Recipes With Ease</h4>
         <div class="row center">
-          <h5 class="header col s12 black-text" id="top"><em>find delicious recipes instantly with as little as one item</em></h5>
+          <h5 class="header col s12 black-text" id="top">
+            <em>find delicious recipes instantly with as little as one item</em>
+          </h5>
         </div>
-        <br><br>
+        <br>
+        <br>
       </div>
     </div>
-    <div class="parallax"><img id="bg1" src="assets/lukas-blazek-261682-unsplash.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax">
+      <img id="bg1" src="assets/lukas-blazek-261682-unsplash.jpg" alt="Unsplashed background img 1">
+    </div>
   </div>
 
-  <!-- Begin Form Area -->
-  <div class="container">
-    <div class="col s12 m4">
-      <div class="card">
+  <!-- Top Banner Search Results Page-->
+  <div id="index-banner-results" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br>
+        <br>
+        <h1 class="header center red-text ">Search Results</h1>
+        <br>
+        <br>
+      </div>
+    </div>
+    <div class="parallax">
+      <img id="bg1" src="assets/brooke-lark-230140-unsplash.jpg" alt="Unsplashed background img 1">
+    </div>
+    </div>
 
-        <div class="card-body">
+    <!-- Begin Form Area -->
+    <div class="container" id="form-container">
+      <div class="col s12 m4">
+        <div class="card">
 
-          <form>
+          <div class="card-body">
 
-            <div class="form-group">
-              <div class="input-field col s12">
-                <i class="material-icons prefix">mode_edit</i>
-                <textarea id="icon_prefix2" class="materialize-textarea" id="searchTerm"></textarea>
-                <label for="icon_prefix2">Enter Food Item</label>
+            <form>
+
+              <div class="form-group">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">mode_edit</i>
+                  <textarea id="searchTerm" class="materialize-textarea"></textarea>
+                  <label for="searchTerm">Enter Food Item</label>
+                </div>
               </div>
-            </div>
 
-            <div class="form-group">
-              <label for="numTime">Total Cook and Prep Time</label>
-              <select class="form-control" id="numTime">
-                <option selected>30 Minutes</option>
-                <option>60 Minutes</option>
-                <option>120 Minutes</option>
-              </select>
+              <div class="form-group">
+                <label for="numTime">Total Cook and Prep Time (within ___ mins)</label>
+                <select class="form-control" id="numTime">
+                  <option selected>30</option>
+                  <option>60</option>
+                  <option>120</option>
+                </select>
 
-            </div>
+              </div>
 
-            <div class="form-group">
+              <div class="form-group">
                 <label for="numResults">Number of Results</label>
                 <select class="form-control" id="numResults">
                   <option>1</option>
@@ -118,33 +158,40 @@
                 </select>
               </div>
 
-            <div class="row center">
-              <a id="searchBtn" class="btn waves-effect waves-light green" type="" name="action" a href="#">Submit
-                <i class="material-icons right">send</i>
-              </a>
-            </div>
+              <div class="row center">
+                <button id="searchBtn" class="btn waves-effect waves-light green" type="submit" name="action">Submit
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
 
-          </form>
+            </form>
 
-          <div class="container">
-            <div class="row" id="displayResults">
           </div>
-    
-        </div>
 
         </div>
-
       </div>
     </div>
-  </div>  
+
+    <!-- Display Search Results -->
+
+    <div class="container">
+      <div class="row" id="displayResults">
+      </div>
+
+    </div>
+
+    <!-- Added Modal -->
+    <div id="modal"></div>
 
 
     <!-- Bottom Banner -->
     <div class="parallax-container ">
-        <div class="section no-pad-bot"></div>
-        <div class="parallax"><img id="bg2" src="assets/chinh-le-duc-264152-unsplash.jpg" alt="Unsplashed background img 2"></div>
+      <div class="section no-pad-bot"></div>
+      <div class="parallax">
+        <img id="bg2" src="assets/chinh-le-duc-264152-unsplash.jpg" alt="Unsplashed background img 2">
+      </div>
     </div>
-      
+
     <!-- Footer Area -->
     <footer class="page-footer green" id="footer">
       <div class="container">
@@ -166,29 +213,5 @@
 
 </body>
 
-<script>
-
-  // document.addEventListener('DOMContentLoaded', function () {
-  //   var elems = document.querySelectorAll('select');
-  //   var instances = M.FormSelect.init(elems, options);
-  // });
-
-  // var slider = document.getElementById("test-slider");
-  // noUiSlider.create(slider, {
-  //   start: [1, 10],
-  //   connect: true,
-  //   step: 1,
-  //   orientation: 'horizontal', // 'horizontal' or 'vertical'
-  //   range: {
-  //     'min': 0,
-  //     'max': 100
-  //   },
-  //   format: wNumb({
-  //     decimals: 0
-  //   })
-  // });
-
-
-</script>
 
 </html>
