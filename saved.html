@@ -31,42 +31,46 @@
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+   <!-- firebase cdn -->
+   <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
+
+   <!-- CSS  -->
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+   <link href="https://fonts.googleapis.com/css?family=Alegreya+SC:900|Cinzel:700|Vollkorn:900" rel="stylesheet">
+
 </head>
 
-
-
-
-
-<!-- FROM THE WEB-->
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Recipeze</title>
-
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-</head>
 
 <body>
   <nav class="white" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="index.html" class="brand-logo">REC<img src="assets/fork.png">PEZE</a>
+      <a id="logo-container" href="index.html" class="brand-logo">REC
+        <img src="assets/fork.png">PEZE</a>
       <ul class="right hide-on-med-and-down">
-          <li><a href="index.html">Home</a></li>
-        <li><a href="recipes.html">Recipes</a></li>
-        <li><a href="saved.html">My Recipes</a></li>
-        <li><a href="nearme.html">Stores Near Me</a></li>
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li>
+          <a href="recipes.html">Recipes</a>
+        </li>
+        <li>
+          <a href="saved.html">My Recipes</a>
+        </li>
+        <li>
+          <a href="nearme.html">Stores Near Me</a>
+        </li>
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
-        <li><a href="#">Navbar Link</a></li>
+        <li>
+          <a href="#">Navbar Link</a>
+        </li>
       </ul>
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
     </div>
   </nav>
 
@@ -74,97 +78,38 @@
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
       <div class="container">
-        <br><br>
+        <br>
+        <br>
         <h1 class="header center green-text ">My Saved Recipes</h1>
-        <br><br>
+        <br>
+        <br>
 
       </div>
     </div>
-    <div class="parallax"><img id="bg1" src="assets/lukas-blazek-261682-unsplash.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax">
+      <img id="bg1" src="assets/lukas-blazek-261682-unsplash.jpg" alt="Unsplashed background img 1">
+    </div>
   </div>
 
 
+
+<!-- Display Saved Recipes -->
   <div class="container">
-    <!-- <div class="section"> -->
 
-    <div class="col s12 m4">
-
-      <div class="card">
-
-        <div class="card-header">
-
-          SEARCH
-
-        </div>
-
-        <div class="card-body">
-
-          <form>
-            <div class="form-group">
-              <label for="searchTerm">Search Term</label>
-              <input type="email" class="form-control" id="searchTerm" aria-describedby="emailHelp" placeholder="Enter food">
-              <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-            </div>
-
-            <div class="form-group">
-              <label for="numTime">Total Cook and Prep Time (mins)</label>
-              <select class="form-control" id="numTime">
-                <option selected>30</option>
-                <option>60</option>
-                <option>120</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="numResults">Number of Results</label>
-              <select class="form-control" id="numResults">
-                <option>1</option>
-                <option selected>5</option>
-                <option>10</option>
-              </select>
-            </div>
-
-            <div class="row center">
-              <a href="#" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Search
-              </a>
-            </div>
-
-          </form>
-
-          <!-- <div class="card mt-5">
-            <div class="card-header">
-
-              RESULTS
-
-            </div>
-
-            <div class="card-body" id="displayResults">
-
-              <!-- <div class="card m-2">
-                                  hello!
-                              </div>
-          
-                              <div class="card m-2">
-                                  interesting!
-                              </div> -->
-            </div> -->
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-
-
+    <div id="display-collection"></div>
 
   </div>
-  </div>
+
+
 
 
   <div class="parallax-container valign-wrapper">
     <div class="section no-pad-bot">
 
     </div>
-    <div class="parallax"><img id="bg2" src="assets/chinh-le-duc-264152-unsplash.jpg" alt="Unsplashed background img 2"></div>
+    <div class="parallax">
+      <img id="bg2" src="assets/chinh-le-duc-264152-unsplash.jpg" alt="Unsplashed background img 2">
+    </div>
   </div>
 
 
@@ -173,7 +118,8 @@
 
   <footer class="page-footer teal">
     <div class="container col">
-      Created by: <a class="text-lighten-3">Alicia Agnew, Binh (Cindy) Lam, Gulden Rose Memis, Matthew Neuber</a>
+      Created by:
+      <a class="text-lighten-3">Alicia Agnew, Binh (Cindy) Lam, Gulden Rose Memis, Matthew Neuber</a>
     </div>
   </footer>
 
@@ -183,8 +129,8 @@
   <script src="js.materialize/materialize.js"></script>
   <script src="js.materialize/init.js"></script>
 
-  <!-- app.js -->
-  <script src="app.js"></script>
+  <!-- collection.js -->
+  <script src="javascript/collection.js"></script>
 
 
 </body>
