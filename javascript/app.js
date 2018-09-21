@@ -90,7 +90,7 @@ function runQuery(numSearch, queryURL) {
       //Display Card Section for Each Recipe Result
       var displaySection = $("<div>");
       displaySection.attr("id", "recipe-" + i);
-      displaySection.addClass("card p-3 m-2 overflow-wrap overflow-hidden clearfix w-100 h-100");
+      displaySection.addClass("card p-3 m-2 w-100 h-100");
       $("#displayResults").append(displaySection);
 
       //Display Videos of Each Recipe Result
@@ -166,6 +166,7 @@ function runQuery(numSearch, queryURL) {
       saveBtn.attr("data-dietLabel", element.dietLabels);
       saveBtn.attr("data-healthLabel", element.healthLabels);
       saveBtn.attr("data-url", element.url);
+      saveBtn.attr("data-totalTime", element.totalTime);
       saveBtn.text("Save to Collections");
       saveBtn.addClass("saveBtn w-25 m-3");
 
@@ -197,8 +198,11 @@ function runQuery(numSearch, queryURL) {
       $("#recipe-" + i).append(
         "<h5> Total Calories/person: " + calories + "</h5>"
       );
+      $("#recipe-" + i).append(
+        "<h5> Total Cook/Prep Time: " + element.totalTime + " mins </h5>"
+      );
       $("#recipe-" + i).append(buttonSection);
-      //$("#recipe-" + i).append(videoSection);
+     
     });
   });
 }
@@ -256,6 +260,8 @@ $(document).on("click", ".saveBtn", function() {
   var calories = $(this).attr("data-calories");
   var dietLabel = $(this).attr("data-dietLabel");
   var healthLabel = $(this).attr("data-healthLabel");
+  var ingredientLines= $(this).attr("data-ingredientLines")
+  var totalTime = $(this).attr("data-totalTime");
   var url = $(this).attr("data-url");
   //push data to Firebase database
   database.ref().push({
@@ -264,6 +270,8 @@ $(document).on("click", ".saveBtn", function() {
     calories: calories,
     dietLabel: dietLabel,
     healthLabel: healthLabel,
+    ingredientLines: ingredientLines,
+    totalTime: totalTime,
     url: url,
     dateAdded: firebase.database.ServerValue.TIMESTAMP
   });
