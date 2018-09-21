@@ -43,27 +43,40 @@
 </head>
 
 
-<!----- Begin Page ----->
+<!--- Begin Page -->
 
 <body>
 
     <!-- Nav Bar, currently not working streched out -->
     <nav class="red" role="navigation">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="index.html" class="brand-logo">REC<img src="assets/fork.png">PEZE</a>
+            <a id="logo-container" href="home.html" class="brand-logo">Logo</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="recipes.html">Recipes</a></li>
-                <li><a href="saved.html">My Recipes</a></li>
-                <li><a href="nearme.html">Stores Near Me</a></li>
+                <li>
+                    <a href="recipes.html">Recipes</a>
+                </li>
+                <li>
+                    <a href="saved.html">My Recipes</a>
+                </li>
+                <li>
+                    <a href="nearme.html">Stores Near Me</a>
+                </li>
             </ul>
 
             <ul id="nav-mobile" class="sidenav">
-                    <li><a href="index.html">Home</a></li>
-                <li><a href="recipes.html">Recipes</a></li>
-                <li><a href="saved.html">My Recipes</a></li>
-                <li><a href="nearme.html">Stores Near Me</a></li>
+                <li>
+                    <a href="recipes.html">Recipes</a>
+                </li>
+                <li>
+                    <a href="saved.html">My Recipes</a>
+                </li>
+                <li>
+                    <a href="nearme.html">Stores Near Me</a>
+                </li>
             </ul>
-            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+                <i class="material-icons">menu</i>
+            </a>
         </div>
     </nav>
 
@@ -71,13 +84,21 @@
     <div id="index-banner" class="parallax-container">
         <div class="section no-pad-bot">
             <div class="container">
-                <br><br>
+                <br>
+                <br>
                 <h1 class="header center red-text ">Search Results</h1>
-                <br><br>
+                <br>
+                <br>
             </div>
         </div>
-        <div class="parallax"><img id="bg1" src="assets/brooke-lark-230140-unsplash.jpg" alt="Unsplashed background img 1"></div>
-    
+        <div class="parallax">
+            <img id="bg1" src="assets/brooke-lark-230140-unsplash.jpg" alt="Unsplashed background img 1">
+        </div>
+
+
+
+    </div>
+
     <div class="container">
         <div class="row">
             <div class="col s12 m6">
@@ -85,7 +106,9 @@
                     <div class="card-image">
                         <img src="assets/background1.jpg">
                         <span class="card-title">Card Title</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                        <a class="btn-floating halfway-fab waves-effect waves-light red">
+                            <i class="material-icons">add</i>
+                        </a>
                     </div>
                     <div class="card-content">
                         <p>I am a very simple card. I am good at containing small bits of information. I am convenient because
@@ -93,19 +116,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-           <!-- Added this container **************** -->
-
-    <div class="container">
-
-            <div class="row" id="displayResults">
-    
-    
-    
-    
-            </div>
-    
         </div>
 
         <div class="row">
@@ -114,7 +124,9 @@
                     <div class="card-image">
                         <img src="assets/background2.jpg">
                         <span class="card-title">Card Title</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                        <a class="btn-floating halfway-fab waves-effect waves-light red">
+                            <i class="material-icons">add</i>
+                        </a>
                     </div>
                     <div class="card-content">
                         <p>I am a very simple card. I am good at containing small bits of information. I am convenient because
@@ -123,12 +135,25 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
+
+
+
+    <!-- Added this container **************** -->
+
+    <div class="container">
+
+        <div class="row" id="displayResults">
+
+
+
+
+        </div>
+
+    </div>
 
     <!-- Added Modal -->
     <div id="modal"></div>
-
-    </div>
 
 
 
@@ -138,7 +163,7 @@
     <footer class="page-footer red" id="footer">
         <div class="container">
             <div class="row">
-                <a class="text-lighten-3">Created By: Alicia Agnew, Binh (Cindy) Lam, Gulden Rose Memis, Matthew Neuber</a>
+                <a class="text-lighten-3">Created By: Alicia Agnew, Binh (Cindy) Lam, Gulden Rose Memis, Matthew Neubar</a>
             </div>
         </div>
     </footer>
@@ -149,35 +174,11 @@
     <script src="js.materialize/materialize.js"></script>
     <script src="js.materialize/init.js"></script>
 
-    <!-- app.js -->
+    <!-- displayapp.js -->
     <script src="javascript/displayapp.js"></script>
 
 
 </body>
 
-<script>
-
-    // document.addEventListener('DOMContentLoaded', function () {
-    //     var elems = document.querySelectorAll('select');
-    //     var instances = M.FormSelect.init(elems, options);
-    // });
-
-    // var slider = document.getElementById("test-slider");
-    // noUiSlider.create(slider, {
-    //     start: [1, 10],
-    //     connect: true,
-    //     step: 1,
-    //     orientation: 'horizontal', // 'horizontal' or 'vertical'
-    //     range: {
-    //         'min': 0,
-    //         'max': 100
-    //     },
-    //     format: wNumb({
-    //         decimals: 0
-    //     })
-    // });
-
-
-</script>
 
 </html>

@@ -32,6 +32,13 @@ var queryURLBase =
   "&app_key=" +
   apiKey;
 
+//Show Index Banner and Hide Results Banner when loading page 
+$( document ).ready(function() {
+$("#index-banner-Index").show();
+$("#form-container").show();
+$("#index-banner-results").hide();
+});
+
 //Get the data from the Recipe Search API
 function runQuery(numSearch, queryURL) {
   $.ajax({
@@ -228,9 +235,12 @@ $("#searchBtn").on("click", function() {
   //Run this function to GET the Recipe Search API data
   runQuery(parseInt(numResults), newURL);
   
+  //Using JQuery to hide and show results info
   $("#form-container").hide();
+  $("#index-banner-Index").hide();
+  $("#index-banner-results").show();
+  $("#navbar").attr("class","red");
 
-  
 });
 
 //Instruction Button opens up a new page in a new window
