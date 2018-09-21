@@ -27,7 +27,7 @@ var database = firebase.database();
 
 //queryURL base
 var queryURLBase =
-  "http://api.edamam.com/search?from=0&to=20&app_id=" +
+  "https://api.edamam.com/search?from=0&to=20&app_id=" +
   apiId +
   "&app_key=" +
   apiKey;
