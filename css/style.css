@@ -6,6 +6,11 @@
  * Made By MaterializeCSS.com
  */
 
+#top, #index-banner {
+  font-family:'Cinzel', serif;
+} 
+
+
 nav ul a,
 nav .brand-logo {
   color: #444;
@@ -71,3 +76,4 @@ footer.page-footer {
 #recipeCard {
   margin-right: 50px;
 }
+
