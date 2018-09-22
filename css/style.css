@@ -8,8 +8,17 @@
 
 #top, #index-banner {
   font-family:'Cinzel', serif;
+  
 } 
 
+h1 {
+  text-shadow: 0.1em 0.1em 0.2em black
+}
+
+a:hover{
+  text-decoration: none;
+  color: antiquewhite;
+}
 
 nav ul a,
 nav .brand-logo {
@@ -60,7 +69,7 @@ p {
 
 footer.page-footer {
   margin: 0;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 #bg1 {
@@ -76,4 +85,18 @@ footer.page-footer {
 #recipeCard {
   margin-right: 50px;
 }
+
+li {
+  display: block;  
+}
+/* 
+#footer{
+  padding: 0px 10px;
+  word-wrap: normal;
+  display: inline-block;
+}
+
+#foot1{
+  border: #444;
+} */
 
