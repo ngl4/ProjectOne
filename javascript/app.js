@@ -32,11 +32,14 @@ var queryURLBase =
   "&app_key=" +
   apiKey;
 
-//Show Index Banner and Hide Results Banner when loading page 
-$( document ).ready(function() {
-$("#index-banner-Index").show();
-$("#form-container").show();
-$("#index-banner-results").hide();
+//Show Index Banner and Hide Results Banner
+$(document).ready(function() {
+  $("#index-banner-Index").show();
+  $("#form-container").show();
+  $("#index-banner-results").hide();
+  //Hide ingredients inputs
+  $("#secondterm").hide();
+  $("#searchTerm2").hide();
 });
 
 //Get the data from the Recipe Search API
@@ -140,12 +143,13 @@ function runQuery(numSearch, queryURL) {
       $("#modal").append(modal_Div);
       $(".modal").modal();
 
-
       //instruction Button
       var instructionBtn = $("<button>");
       instructionBtn.attr("src", element.url);
       instructionBtn.text("See Instructions");
-      instructionBtn.addClass("instructionBtn w-25 m-3 waves-effect waves-light btn");
+      instructionBtn.addClass(
+        "instructionBtn w-25 m-3 waves-effect waves-light btn"
+      );
 
       //Youtube video Button
       var youtubeBtn = $("<button>");
@@ -202,49 +206,98 @@ function runQuery(numSearch, queryURL) {
         "<h5> Total Cook/Prep Time: " + element.totalTime + " mins </h5>"
       );
       $("#recipe-" + i).append(buttonSection);
-     
     });
   });
 }
 
 //Search Recipe Button
 $("#searchBtn").on("click", function() {
-  chosenSearch = [];
-  searchItems = [];
-
   event.preventDefault();
+  chosenSearch = [];
+  var newURL;
 
-  console.log(typeof searchTerm);
-  console.log(searchTerm);
+  searchTerm = $("#searchTerm")
+    .val()
+    .trim();
 
-  searchTerm = $("#searchTerm").val().trim();
-  //push all the searchTerm string to the searchItems Array
-  searchItems.push(searchTerm);
+  searchTerm1 = $("#searchTerm1")
+    .val()
+    .trim();
 
-  console.log(typeof searchTerm);
-  console.log(searchTerm);
+  searchTerm2 = $("#searchTerm2")
+    .val()
+    .trim();
 
   numTime = $("#numTime").val();
-  console.log(numTime);
-
-  searchItems.push(numTime);
 
   numResults = $("#numResults").val();
 
-  searchItems.push(numResults);
-  //store all the searchItems into Local Storage for later access
-  localStorage.setItem("searchItems", JSON.stringify(searchItems));
+  //Logic for multiple ingredients
+  if (searchTerm === "") {
+    $("#wrong-message").text("Please fill in at least one ingredient!");
+    return false;
+  } else if (
+    !(searchTerm === "") &&
+    !(searchTerm1 === "") &&
+    !(searchTerm2 === "")
+  ) {
+    //push all the searchTerm string to the searchItems Array
+    searchItems.push(searchTerm);
+    searchItems.push(searchTerm1);
+    searchItems.push(searchTerm2);
+    searchItems.push(numTime);
+    searchItems.push(numResults);
+    //store all the searchItems into Local Storage for later access
+    localStorage.setItem("searchItems", JSON.stringify(searchItems));
 
-  var newURL = queryURLBase + "&q=" + searchTerm;
-  //Run this function to GET the Recipe Search API data
-  runQuery(parseInt(numResults), newURL);
-  
+    newURL =
+      queryURLBase +
+      "&q=" +
+      "+" +
+      searchTerm +
+      "+" +
+      searchTerm1 +
+      "+" +
+      searchTerm2;
+
+    //Run this function to GET the Recipe Search API data
+    runQuery(parseInt(numResults), newURL);
+  } else if (!(searchTerm === "") && !(searchTerm1 === "")) {
+    searchItems.push(searchTerm);
+    searchItems.push(searchTerm1);
+    searchItems.push(numTime);
+    searchItems.push(numResults);
+
+    localStorage.setItem("searchItems", JSON.stringify(searchItems));
+
+    newURL = queryURLBase + "&q=" + "+" + searchTerm + "+" + searchTerm1;
+
+    runQuery(parseInt(numResults), newURL);
+  } else if (!(searchTerm === "")) {
+    searchItems.push(searchTerm);
+    searchItems.push(numTime);
+    searchItems.push(numResults);
+
+    localStorage.setItem("searchItems", JSON.stringify(searchItems));
+
+    newURL = queryURLBase + "&q=" + searchTerm;
+
+    runQuery(parseInt(numResults), newURL);
+  }
   //Using JQuery to hide and show results info
   $("#form-container").hide();
   $("#index-banner-Index").hide();
   $("#index-banner-results").show();
-  $("#navbar").attr("class","red");
+  $("#navbar").attr("class", "red");
+});
 
+//add ingredient input once the add icon is clicked
+$("#add-term-btn").on("click", function() {
+  $("#secondterm").show();
+});
+
+$(document).on("click", "#add-term-btn1", function() {
+  $("#searchTerm2").show();
 });
 
 //Instruction Button opens up a new page in a new window
@@ -260,7 +313,7 @@ $(document).on("click", ".saveBtn", function() {
   var calories = $(this).attr("data-calories");
   var dietLabel = $(this).attr("data-dietLabel");
   var healthLabel = $(this).attr("data-healthLabel");
-  var ingredientLines= $(this).attr("data-ingredientLines")
+  var ingredientLines = $(this).attr("data-ingredientLines");
   var totalTime = $(this).attr("data-totalTime");
   var url = $(this).attr("data-url");
   //push data to Firebase database
