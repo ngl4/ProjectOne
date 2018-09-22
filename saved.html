@@ -44,17 +44,17 @@
 
 
 <body>
-  <nav class="white" role="navigation">
+  <nav class="green" role="navigation">
     <div class="nav-wrapper container">
       <a id="logo-container" href="index.html" class="brand-logo">REC
         <img src="assets/fork.png">PEZE</a>
       <ul class="right hide-on-med-and-down">
-        <li>
+        <!-- <li>
           <a href="index.html">Home</a>
-        </li>
-        <li>
+        </li> -->
+        <!-- <li>
           <a href="recipes.html">Recipes</a>
-        </li>
+        </li> -->
         <li>
           <a href="saved.html">My Recipes</a>
         </li>
@@ -63,10 +63,18 @@
         </li>
       </ul>
 
+      <!-- Side Nav -->
       <ul id="nav-mobile" class="sidenav">
         <li>
-          <a href="#">Navbar Link</a>
+          <a href="index.html">Home</a>
         </li>
+        <li>
+          <a href="saved.html">My Recipes</a>
+        </li>
+        <li>
+          <a href="nearme.html">Stores Near Me</a>
+        </li>
+
       </ul>
       <a href="#" data-target="nav-mobile" class="sidenav-trigger">
         <i class="material-icons">menu</i>
@@ -86,12 +94,23 @@
 
       </div>
     </div>
+  <!-- First BG Image -->  
     <div class="parallax">
-      <img id="bg1" src="assets/lukas-blazek-261682-unsplash.jpg" alt="Unsplashed background img 1">
+      <img id="bg1" src="assets/forsavedpage.jpg" alt="Unsplashed">
     </div>
   </div>
 
-
+<!-- This is a PreLoader if y'all can get it to work properly....-->
+  <!-- <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div> -->
 
   <!-- Display Saved Recipes -->
   <div class="container">
@@ -105,26 +124,43 @@
 
 
 
-
+<!-- Bottom BG Image-->
   <div class="parallax-container valign-wrapper">
     <div class="section no-pad-bot">
 
     </div>
     <div class="parallax">
-      <img id="bg2" src="assets/chinh-le-duc-264152-unsplash.jpg" alt="Unsplashed background img 2">
+      <img id="bg2" src="assets/savedbottom.jpg" alt="Unsplashed">
     </div>
   </div>
 
 
 
+  <!-- Some one please fix the stupid spacing in the names!!-->
+  <footer class="page-footer green" id="footer">
+      <div class="footer-copyright">
+        <div class="container">
+        © 2018 Copyright
+        <a class="grey-text text-lighten-4 right" id="foot1" href="https://github.com/AAgnew">Alicia Agnew</a>
+        <a class="grey-text text-lighten-4 right" href="https://github.com/ngl4">Binh Cindy Lam</a>
+        <a class="grey-text text-lighten-4 right" href="https://github.com/memisgulden">Gulden Rose Memis</a>
+        <a class="grey-text text-lighten-4 right" href="https://github.com/mneuber55">Matthew Neuber</a>
+           
+        </div>
+      </div>
+    </footer>
 
 
-  <footer class="page-footer teal">
+
+<!-- Footer -->
+  <!-- <footer class="page-footer green">
     <div class="container col">
-      Created by:
-      <a class="text-lighten-3">Alicia Agnew, Binh (Cindy) Lam, Gulden Rose Memis, Matthew Neuber</a>
+      <a class="text-lighten-3" id="footerText">Created By: Alicia Agnew, Binh (Cindy) Lam, 
+        Gulden Rose Memis, Matthew Neuber &nbsp;&nbsp;&nbsp;&nbsp; © 2018 Copyright</a>
+          
     </div>
-  </footer>
+  
+  </footer> -->
 
 
   <!--  Scripts-->
