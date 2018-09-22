@@ -100,3 +100,37 @@ li {
   border: #444;
 } */
 
+.foot {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: green;
+}
+
+#person {
+  float: right;
+  padding: 16px;
+}
+
+#copy {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+  margin-top: 0;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  /* padding: 16px; */
+  text-decoration: none;
+}
+
+li a:hover {
+  color: black;
+}
