@@ -40,6 +40,9 @@ $(document).ready(function() {
   //Hide ingredients inputs
   $("#secondterm").hide();
   $("#searchTerm2").hide();
+  //Hide Bottom Result Area
+  $("#result-bottom-banner").hide();
+  $("#result-footer").hide();
 });
 
 //Get the data from the Recipe Search API
@@ -289,6 +292,11 @@ $("#searchBtn").on("click", function() {
   $("#index-banner-Index").hide();
   $("#index-banner-results").show();
   $("#navbar").attr("class", "red");
+  //Hide Search Area and show Result Area
+  $("#result-bottom-banner").show();
+  $("#result-footer").show();
+  $("#search-bottom-banner").hide();
+  $("#search-footer").hide();
 });
 
 //add ingredient input once the add icon is clicked
