@@ -40,6 +40,8 @@ $(document).ready(function() {
   //Hide ingredients inputs
   $("#secondterm").hide();
   $("#searchTerm2").hide();
+  $("#results-bottom-banner").hide()
+  $("#footer-results").hide()
 });
 
 //Get the data from the Recipe Search API
@@ -216,17 +218,11 @@ $("#searchBtn").on("click", function() {
   chosenSearch = [];
   var newURL;
 
-  searchTerm = $("#searchTerm")
-    .val()
-    .trim();
+  searchTerm = $("#searchTerm").val().trim();
 
-  searchTerm1 = $("#searchTerm1")
-    .val()
-    .trim();
+  searchTerm1 = $("#searchTerm1").val().trim();
 
-  searchTerm2 = $("#searchTerm2")
-    .val()
-    .trim();
+  searchTerm2 = $("#searchTerm2").val().trim();
 
   numTime = $("#numTime").val();
 
@@ -235,7 +231,6 @@ $("#searchBtn").on("click", function() {
   //Logic for multiple ingredients
   if (searchTerm === "") {
     $("#wrong-message").text("Please fill in at least one ingredient!");
-    return false;
   } else if (
     !(searchTerm === "") &&
     !(searchTerm1 === "") &&
@@ -289,6 +284,10 @@ $("#searchBtn").on("click", function() {
   $("#index-banner-Index").hide();
   $("#index-banner-results").show();
   $("#navbar").attr("class", "red");
+  $("#results-bottom-banner").show();
+  $("#footer-results").show();
+  $("#search-bottom-banner").hide();
+  $("#footer-search").hide();
 });
 
 //add ingredient input once the add icon is clicked

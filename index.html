@@ -120,18 +120,18 @@
     <div class="parallax">
       <img id="bg1" src="assets/brooke-lark-230140-unsplash.jpg" alt="Unsplashed background img 1">
     </div>
-    </div>
+  </div>
 
-    <!-- Begin Form Area -->
-    <div class="container" id="form-container">
-      <div class="col s12 m4">
-        <div class="card">
+  <!-- Begin Form Area -->
+  <div class="container" id="form-container">
+    <div class="col s12 m4">
+      <div class="card">
 
-          <div class="card-body">
+        <div class="card-body">
 
-            <form>
-              <!-- Form Design created by Rose and Alicia -->
-              <!-- <div class="form-group">
+          <form>
+            <!-- Form Design created by Rose and Alicia -->
+            <!-- <div class="form-group">
                 <div class="input-field col s12">
                   <i class="material-icons prefix">mode_edit</i>
                   <textarea id="searchTerm" class="materialize-textarea"></textarea>
@@ -139,91 +139,108 @@
                 </div>
               </div> -->
 
-              <!-- New Form with more ingredients added option by Cindy-->
-              <div class="form-group">
-                <label for="searchTerm">Search (up to 3 ingredients)</label>
-  
-                <div class="row mb-0">
-  
-                  <div class="col-md-11 mb-0 pt-0 pb-0 pr-1 pl-3">
-                    <input type="text" class="form-control" id="searchTerm" placeholder="Enter ingredient">
-                  </div>
-                  <div class="col-md-1 p-0 w-50">
-                    <a class="btn-floating btn-small waves-effect waves-light green icon-align" id="add-term-btn">
-                      <i class="material-icons">add</i>
-                    </a>
-                  </div>
+            <!-- New Form with more ingredients added option by Cindy-->
+            <div class="form-group">
+              <label for="searchTerm">Search (up to 3 ingredients)</label>
+
+              <div class="row mb-0">
+
+                <div class="col-md-11 mb-0 pt-0 pb-0 pr-1 pl-3">
+                  <input type="text" class="form-control" id="searchTerm" placeholder="Enter ingredient">
                 </div>
-                <div class="row mb-0" id="secondterm">
-  
-                    <div class="col-md-11 mb-0 pt-0 pb-0 pr-1 pl-3">
-                      <input type="text" class="form-control" id="searchTerm1" placeholder="Enter ingredient">
-                    </div>
-                    <div class="col-md-1 p-0 w-50">
-                      <a class="btn-floating btn-small waves-effect waves-light green icon-align" id="add-term-btn1">
-                        <i class="material-icons">add</i>
-                      </a>
-                    </div>
-                  </div>
-                <input type="text" class="form-control col-md-11 slight-position" id="searchTerm2" placeholder="Enter ingredient">
+                <div class="col-md-1 p-0 w-50">
+                  <a class="btn-floating btn-small waves-effect waves-light green icon-align" id="add-term-btn">
+                    <i class="material-icons">add</i>
+                  </a>
+                </div>
               </div>
-  
+              <div class="row mb-0" id="secondterm">
 
-              <div class="form-group">
-                <label for="numTime">Total Cook and Prep Time (within ___ mins)</label>
-                <select class="form-control" id="numTime">
-                  <option selected>30</option>
-                  <option>60</option>
-                  <option>120</option>
-                </select>
-
+                <div class="col-md-11 mb-0 pt-0 pb-0 pr-1 pl-3">
+                  <input type="text" class="form-control" id="searchTerm1" placeholder="Enter ingredient">
+                </div>
+                <div class="col-md-1 p-0 w-50">
+                  <a class="btn-floating btn-small waves-effect waves-light green icon-align" id="add-term-btn1">
+                    <i class="material-icons">add</i>
+                  </a>
+                </div>
               </div>
+              <input type="text" class="form-control col-md-11 slight-position" id="searchTerm2" placeholder="Enter ingredient">
+            </div>
 
-              <div class="form-group">
-                <label for="numResults">Number of Results</label>
-                <select class="form-control" id="numResults">
-                  <option>1</option>
-                  <option selected>5</option>
-                  <option>10</option>
-                </select>
-              </div>
 
-              <div class="row center">
-                <button id="searchBtn" class="btn waves-effect waves-light green" type="submit" name="action">Submit
-                  <i class="material-icons right">send</i>
-                </button>
-              </div>
+            <div class="form-group">
+              <label for="numTime">Total Cook and Prep Time (within ___ mins)</label>
+              <select class="form-control" id="numTime">
+                <option selected>30</option>
+                <option>60</option>
+                <option>120</option>
+              </select>
 
-            </form>
+            </div>
 
-          </div>
+            <div class="form-group">
+              <label for="numResults">Number of Results</label>
+              <select class="form-control" id="numResults">
+                <option>1</option>
+                <option selected>5</option>
+                <option>10</option>
+              </select>
+            </div>
+
+            <div class="row center">
+              <button id="searchBtn" class="btn waves-effect waves-light green" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+
+          </form>
 
         </div>
+
       </div>
     </div>
+  </div>
 
-    <!-- Display Search Results -->
+  <!-- Display Search Results -->
 
+  <div class="container">
+    <div class="row" id="displayResults">
+    </div>
+
+  </div>
+
+  <!-- Added Modal -->
+  <div id="modal"></div>
+
+
+  <!-- Bottom Banner Search -->
+  <div id="search-bottom-banner" class="parallax-container">
+    <div class="section no-pad-bot"></div>
+    <div class="parallax">
+      <img id="bg2" src="assets/chinh-le-duc-264152-unsplash.jpg" alt="Unsplashed background img 2">
+    </div>
+  </div>
+
+  <!-- Bottom Banner Results-->
+  <div id="results-bottom-banner" class="parallax-container">
+    <div class="section no-pad-bot"></div>
+    <div class="parallax">
+      <img id="bg2" src="assets/chinh-le-duc-264152-unsplash.jpg" alt="Unsplashed background img 2">
+    </div>
+  </div>
+
+  <!-- Footer Area Search-->
+  <footer id="footer-search" class="page-footer green" id="footer">
     <div class="container">
-      <div class="row" id="displayResults">
-      </div>
-
-    </div>
-
-    <!-- Added Modal -->
-    <div id="modal"></div>
-
-
-    <!-- Bottom Banner -->
-    <div class="parallax-container ">
-      <div class="section no-pad-bot"></div>
-      <div class="parallax">
-        <img id="bg2" src="assets/chinh-le-duc-264152-unsplash.jpg" alt="Unsplashed background img 2">
+      <div class="row">
+        <a class="text-lighten-3">Created By: Alicia Agnew, Binh (Cindy) Lam, Gulden Rose Memis, Matthew Neuber</a>
       </div>
     </div>
+  </footer>
 
-    <!-- Footer Area -->
-    <footer class="page-footer green" id="footer">
+    <!-- Footer Area Results-->
+    <footer id="footer-results" class="page-footer red" id="footer">
       <div class="container">
         <div class="row">
           <a class="text-lighten-3">Created By: Alicia Agnew, Binh (Cindy) Lam, Gulden Rose Memis, Matthew Neuber</a>
@@ -232,13 +249,13 @@
     </footer>
 
 
-    <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js.materialize/materialize.js"></script>
-    <script src="js.materialize/init.js"></script>
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js.materialize/materialize.js"></script>
+  <script src="js.materialize/init.js"></script>
 
-    <!-- app.js -->
-    <script src="javascript/app.js"></script>
+  <!-- app.js -->
+  <script src="javascript/app.js"></script>
 
 
 </body>
