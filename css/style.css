@@ -6,6 +6,10 @@
  * Made By MaterializeCSS.com
  */
 
+body{
+  font-family:'Vollkorn', serif;
+}
+
 #top, #index-banner {
   font-family:'Cinzel', serif;
 } 
@@ -16,6 +20,11 @@ nav .brand-logo {
   color: #444;
   font-family:'Cinzel', serif;
 }
+
+.resultsText{
+  font-family:'Cinzel', serif;
+}
+
 
 p {
   line-height: 2rem;
