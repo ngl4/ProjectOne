@@ -6,7 +6,7 @@
  * Made By MaterializeCSS.com
  */
 
-#top, #index-banner {
+#top, #index-banner, html, .container {
   font-family:'Cinzel', serif;
   
 } 
@@ -133,4 +133,29 @@ li a {
 
 li a:hover {
   color: black;
+}
+
+/* Media Query to Fix Logo */
+@media only screen and (max-width: 500px) {
+  
+  .brand-logo {
+    position: fixed;
+  }
+
+  #logo-container {
+    font-size: 20px;
+  }
+
+  #header {
+    margin-top: 0px;
+  }
+
+  h4 {
+    font-size: 20px;
+  }
+
+  em {
+    font-size: 15px;
+  }
+
 }
