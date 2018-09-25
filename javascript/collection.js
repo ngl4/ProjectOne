@@ -49,6 +49,53 @@ database.ref().on("child_added", function(snapshot) {
       " mins </h5>"
   );
 
+   //Display Videos of Each Recipe Result
+   var displayVideo = $("<div>");
+   displayVideo.attr("id", "player-" + content.dateAdded);
+   displayVideo.addClass("m-2");
+
+   var displayVideo1 = $("<div>");
+   displayVideo1.attr("id", "player1-" + content.dateAdded);
+   displayVideo1.addClass("m-2");
+
+   var displayVideo2 = $("<div>");
+   displayVideo2.attr("id", "player2-" + content.dateAdded);
+   displayVideo2.addClass("m-2");
+   //Video Container for the above videos
+   var videoSection = $("<div>");
+   videoSection.attr("id", "videoSection-" + content.dateAdded);
+   videoSection.append(displayVideo);
+   videoSection.append(displayVideo1);
+   videoSection.append(displayVideo2);
+
+   //Modal display code for videoSection
+   var modal_Div = $("<div>");
+   modal_Div.addClass("modal modal-fixed-footer");
+   modal_Div.attr("id", "modal-" + content.dateAdded);
+   var modal_content = $("<div>");
+   modal_content.addClass("modal-content");
+   var modal_title = $("<h4>");
+   modal_title.text(content.title.toUpperCase());
+   var modal_subtext = $("<p>");
+   modal_subtext.text("Sample Videos Related to this Recipe");
+
+   modal_content.append(modal_title);
+   modal_content.append(modal_subtext);
+   modal_content.append(videoSection);
+   modal_Div.append(modal_content);
+
+   var modal_footer = $("<div>");
+   modal_footer.addClass("modal-footer");
+   var modal_close = $("<a>");
+   modal_close.attr("href", "#!");
+   modal_close.addClass("modal-close waves-effect waves-green btn-flat");
+   modal_close.text("Close");
+
+   modal_footer.append(modal_close);
+   modal_Div.append(modal_footer);
+   $("#modal").append(modal_Div);
+   $(".modal").modal();
+
   //instruction Button
   var instructionBtn = $("<button>");
   instructionBtn.attr("src", content.url);
@@ -74,6 +121,12 @@ database.ref().on("child_added", function(snapshot) {
   $(newRow).append(buttonSection);
 
   $("#display-collection").prepend(newRow);
+});
+
+//Instruction Button opens up a new page in a new window
+$(document).on("click", ".instructionBtn", function() {
+  var url = $(this).attr("src");
+  window.open(url);
 });
 
 //Array to store video IDs -- in order to choose how many videos to display

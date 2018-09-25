@@ -239,50 +239,20 @@ $("#searchBtn").on("click", function() {
   if (searchTerm === "") {
     $("#wrong-message").text("Please fill in at least one ingredient!");
     return false;
-  } else if (
-    !(searchTerm === "") &&
-    !(searchTerm1 === "") &&
-    !(searchTerm2 === "")
-  ) {
-    //push all the searchTerm string to the searchItems Array
-    searchItems.push(searchTerm);
-    searchItems.push(searchTerm1);
-    searchItems.push(searchTerm2);
-    searchItems.push(numTime);
-    searchItems.push(numResults);
-    //store all the searchItems into Local Storage for later access
-    localStorage.setItem("searchItems", JSON.stringify(searchItems));
-
-    newURL =
-      queryURLBase +
-      "&q=" +
-      "+" +
-      searchTerm +
-      "+" +
-      searchTerm1 +
-      "+" +
-      searchTerm2;
+  } else if (!(searchTerm === "") && !(searchTerm1 === "") && !(searchTerm2 === "")) {
+    newURL = queryURLBase + "&q=" +
+      "+" + searchTerm + "+" + searchTerm1 + "+" + searchTerm2;
 
     //Run this function to GET the Recipe Search API data
     runQuery(parseInt(numResults), newURL);
-  } else if (!(searchTerm === "") && !(searchTerm1 === "")) {
-    searchItems.push(searchTerm);
-    searchItems.push(searchTerm1);
-    searchItems.push(numTime);
-    searchItems.push(numResults);
 
-    localStorage.setItem("searchItems", JSON.stringify(searchItems));
+  } else if (!(searchTerm === "") && !(searchTerm1 === "")) {
 
     newURL = queryURLBase + "&q=" + "+" + searchTerm + "+" + searchTerm1;
 
     runQuery(parseInt(numResults), newURL);
   } else if (!(searchTerm === "")) {
-    searchItems.push(searchTerm);
-    searchItems.push(numTime);
-    searchItems.push(numResults);
-
-    localStorage.setItem("searchItems", JSON.stringify(searchItems));
-
+    
     newURL = queryURLBase + "&q=" + searchTerm;
 
     runQuery(parseInt(numResults), newURL);
