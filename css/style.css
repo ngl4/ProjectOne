@@ -162,3 +162,20 @@ li a:hover {
   }
 
 }
+
+#display-collection {
+  height: 600px;
+  margin: 50px;
+}
+
+.carousel-item {
+  width: 300px !important;
+  border-style: ridge;
+  overflow: auto;
+}
+
+.carousel-image {
+  height: 250px;
+  width: 250px !important;
+  margin: auto;
+}
