@@ -25,28 +25,23 @@ database.ref().on("child_added", function(snapshot) {
 
   var newRow = $("<div>");
 
-  newRow.addClass("card p-3 m-2 w-100 h-100");
+  newRow.addClass("carousel-item");
 
   newRow.attr("id", "recipe-" + content.dateAdded);
 
   newRow.append(
-    "<h3>" +
+    "<h5>" +
       content.title.toUpperCase() +
-      "</h3>" +
-      "<img class= 'rounded float-left w-25 h-50' src='" +
+      "</h5>" +
+      "<img height='250' width='250' class= 'carousel-image rounded float-left w-25 h-50' src='" +
       content.image +
       "' />" +
-      "<h5>" +
-      content.healthLabel +
-      "[<i>" +
-      content.dietLabel +
-      "</i>]</h5>" +
-      "<h5>Total Calories: " +
+      "<p>Total Calories: " +
       content.calories +
-      "/person</h5>" +
-      "<h5> Total Cook/Prep Time: " +
+      "/person</p>" +
+      "<p> Total Cook/Prep Time: " +
       content.totalTime +
-      " mins </h5>"
+      " mins </p>"
   );
 
    //Display Videos of Each Recipe Result
@@ -121,6 +116,16 @@ database.ref().on("child_added", function(snapshot) {
   $(newRow).append(buttonSection);
 
   $("#display-collection").prepend(newRow);
+
+  if ($('.carousel.carousel-slider').hasClass('initialized')){
+    $('.carousel.carousel-slider').removeClass('initialized')
+}
+
+//just reinit the carousel
+$('.carousel.carousel-slider').carousel({
+  padding: 400,
+});
+
 });
 
 //Instruction Button opens up a new page in a new window
