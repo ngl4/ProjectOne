@@ -89,6 +89,16 @@ function runQuery(numSearch, queryURL) {
         }
       });
     }
+    //Back-button to Search Form
+    var backBtn = $("<a>");
+    backBtn.attr("href", "index.html");
+    backBtn.addClass("btn-floating pulse mt-3 mb-3 red");
+    var backIcon = $("<i>");
+    backIcon.addClass("large material-icons icon-white");
+    backIcon.text("arrow_back");
+    backBtn.append(backIcon);
+    $("#display-back-button").append(backBtn);
+    
     //Display Search Results
     chosenSearch.slice(0, numSearch).forEach(function(element, i) {
       var calories = Math.round(element.calories / element.yield);
@@ -239,20 +249,28 @@ $("#searchBtn").on("click", function() {
   if (searchTerm === "") {
     $("#wrong-message").text("Please fill in at least one ingredient!");
     return false;
-  } else if (!(searchTerm === "") && !(searchTerm1 === "") && !(searchTerm2 === "")) {
-    newURL = queryURLBase + "&q=" +
-      "+" + searchTerm + "+" + searchTerm1 + "+" + searchTerm2;
+  } else if (
+    !(searchTerm === "") &&
+    !(searchTerm1 === "") &&
+    !(searchTerm2 === "")
+  ) {
+    newURL =
+      queryURLBase +
+      "&q=" +
+      "+" +
+      searchTerm +
+      "+" +
+      searchTerm1 +
+      "+" +
+      searchTerm2;
 
     //Run this function to GET the Recipe Search API data
     runQuery(parseInt(numResults), newURL);
-
   } else if (!(searchTerm === "") && !(searchTerm1 === "")) {
-
     newURL = queryURLBase + "&q=" + "+" + searchTerm + "+" + searchTerm1;
 
     runQuery(parseInt(numResults), newURL);
   } else if (!(searchTerm === "")) {
-    
     newURL = queryURLBase + "&q=" + searchTerm;
 
     runQuery(parseInt(numResults), newURL);
