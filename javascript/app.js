@@ -185,7 +185,8 @@ function runQuery(numSearch, queryURL) {
       saveBtn.attr("data-url", element.url);
       saveBtn.attr("data-totalTime", element.totalTime);
       saveBtn.text("Save to Collections");
-      saveBtn.addClass("saveBtn w-25 m-3");
+      saveBtn.addClass("saveBtn waves-effect waves-light btn modal-trigger ml-3");
+
 
       //Buttons Container for the above three buttons
       var buttonSection = $("<div>");
