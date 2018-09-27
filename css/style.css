@@ -163,15 +163,19 @@ li a:hover {
 
 }
 
+.carousel {
+  height: 600px !important;
+}
+
 #display-collection {
-  height: 600px;
-  margin: 50px;
+  margin: auto;
 }
 
 .carousel-item {
   width: 300px !important;
-  border-style: ridge;
   overflow: auto;
+  height: 550px !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .carousel-image {
@@ -182,4 +186,12 @@ li a:hover {
 
 #searchBtn:hover {
   box-shadow: 10px 10px rgba(0, 0, 0, .5);
+}
+
+.carousel button {
+  margin: 5px;
+}
+
+.carousel p {
+  margin: 5px
 }
