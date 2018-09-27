@@ -123,7 +123,10 @@ database.ref().on("child_added", function(snapshot) {
 
 //just reinit the carousel
 $('.carousel.carousel-slider').carousel({
-  padding: 400,
+  padding: 300,
+  shift: 0,
+  dist: -75,
+  duration: 125
 });
 
 });
