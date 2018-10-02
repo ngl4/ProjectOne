@@ -54,6 +54,15 @@ function runQuery(numSearch, queryURL) {
     $("#displayResults").empty();
     console.log(response);
 
+    //TODO
+    //add function -- response in a right order -- take in response and return a new response in a new right order
+    //reassign the response by creating a new variable to store the response
+    //response = calculateOrder(response);
+    //define the function outside of the runQuery function 
+    //check with firebase database 
+
+    //note: calculateCookPrepTime(response, element) --passing more than one argument inside of a function 
+
     //Logic for cook/prep time
     if (parseInt(numTime) === 30) {
       response.hits.forEach(function(element) {
@@ -89,6 +98,10 @@ function runQuery(numSearch, queryURL) {
         }
       });
     }
+    //Hide the Loading Gif
+    $("#loading-gif").hide();
+
+
     //Back-button to Search Form
     var backBtn = $("<a>");
     backBtn.attr("href", "index.html");
@@ -246,6 +259,7 @@ $("#searchBtn").on("click", function() {
 
   numResults = $("#numResults").val();
 
+
   //Logic for multiple ingredients
   if (searchTerm === "") {
     $("#wrong-message").text("Please fill in at least one ingredient!");
@@ -271,6 +285,7 @@ $("#searchBtn").on("click", function() {
     newURL = queryURLBase + "&q=" + "+" + searchTerm + "+" + searchTerm1;
 
     runQuery(parseInt(numResults), newURL);
+
   } else if (!(searchTerm === "")) {
     newURL = queryURLBase + "&q=" + searchTerm;
 
@@ -286,6 +301,13 @@ $("#searchBtn").on("click", function() {
   $("#result-footer").show();
   $("#search-bottom-banner").hide();
   $("#search-footer").hide();
+
+  //Show the loading gif 
+  var showGif = $("<img>");
+  showGif.attr("src", "assets/loading.gif");
+  $("#loading-gif").append(showGif);
+  //more search 
+  //$("#loading-gif").show();
 });
 
 //add ingredient input once the add icon is clicked
