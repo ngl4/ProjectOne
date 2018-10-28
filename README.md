@@ -1,6 +1,6 @@
 # Recipe Search Application
 
-Welcome to [Recipe Search]()! 
+Welcome to [Recipe Search](https://ngl4.github.io/Recipe_App/)! 
 
 ## Beginning:
 
