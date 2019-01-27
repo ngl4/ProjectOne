@@ -295,6 +295,7 @@ $("#searchBtn").on("click", function() {
   $("#form-container").hide();
   $("#index-banner-Index").hide();
   $("#index-banner-results").show();
+  $("#index-banner-results").attr("style", "display: block");
   $("#navbar").attr("class", "red");
   //Hide Search Area and show Result Area
   $("#result-bottom-banner").show();
