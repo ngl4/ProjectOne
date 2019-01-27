@@ -58,10 +58,10 @@ function runQuery(numSearch, queryURL) {
     //add function -- response in a right order -- take in response and return a new response in a new right order
     //reassign the response by creating a new variable to store the response
     //response = calculateOrder(response);
-    //define the function outside of the runQuery function 
-    //check with firebase database 
+    //define the function outside of the runQuery function
+    //check with firebase database
 
-    //note: calculateCookPrepTime(response, element) --passing more than one argument inside of a function 
+    //note: calculateCookPrepTime(response, element) --passing more than one argument inside of a function
 
     //Logic for cook/prep time
     if (parseInt(numTime) === 30) {
@@ -101,7 +101,6 @@ function runQuery(numSearch, queryURL) {
     //Hide the Loading Gif
     $("#loading-gif").hide();
 
-
     //Back-button to Search Form
     var backBtn = $("<a>");
     backBtn.attr("href", "index.html");
@@ -111,7 +110,7 @@ function runQuery(numSearch, queryURL) {
     backIcon.text("arrow_back");
     backBtn.append(backIcon);
     $("#display-back-button").append(backBtn);
-    
+
     //Display Search Results
     chosenSearch.slice(0, numSearch).forEach(function(element, i) {
       var calories = Math.round(element.calories / element.yield);
@@ -119,7 +118,7 @@ function runQuery(numSearch, queryURL) {
       //Display Card Section for Each Recipe Result
       var displaySection = $("<div>");
       displaySection.attr("id", "recipe-" + i);
-      displaySection.addClass("card p-3 m-2 w-100 h-100");
+      displaySection.addClass("row displaySectionWidth");
       $("#displayResults").append(displaySection);
 
       //Display Videos of Each Recipe Result
@@ -174,7 +173,7 @@ function runQuery(numSearch, queryURL) {
       instructionBtn.attr("src", element.url);
       instructionBtn.text("See Instructions");
       instructionBtn.addClass(
-        "instructionBtn w-25 m-3 waves-effect waves-light btn"
+        "instructionBtn m-3 waves-effect waves-light btn"
       );
 
       //Youtube video Button
@@ -184,7 +183,7 @@ function runQuery(numSearch, queryURL) {
       youtubeBtn.attr("data-target", "modal-" + i);
       youtubeBtn.text("Show Sample Videos");
       youtubeBtn.addClass(
-        "videoBtn waves-effect waves-light btn modal-trigger"
+        "videoBtn waves-effect waves-light btn modal-trigger px-0 m-3"
       );
 
       //Save to My Recipes Button
@@ -198,44 +197,98 @@ function runQuery(numSearch, queryURL) {
       saveBtn.attr("data-url", element.url);
       saveBtn.attr("data-totalTime", element.totalTime);
       saveBtn.text("Save to Collections");
-      saveBtn.addClass("saveBtn waves-effect waves-light btn modal-trigger ml-3");
-
+      saveBtn.addClass(
+        "saveBtn waves-effect waves-light btn modal-trigger ml-3 m-3"
+      );
 
       //Buttons Container for the above three buttons
-      var buttonSection = $("<div>");
+      var buttonSection = $("<div class='displayButtonSection'>");
       buttonSection.attr("id", "buttonSection-" + i);
       buttonSection.append(instructionBtn);
       buttonSection.append(youtubeBtn);
       buttonSection.append(saveBtn);
 
       //Attach the Recipe Result content to the appropriate Card Section Div
-      $("#recipe-" + i).append("<h3>" + element.label.toUpperCase() + "</h3>");
+      // $("#recipe-" + i).append("<h3>" + element.label.toUpperCase() + "</h3>");
       $("#recipe-" + i).append(
-        "<h5>" +
+        "<div class='col s12 m6'><div class='card'>" +
+          "<div class='card-image'><img src='" +
+          element.image +
+          "'/><span class='card-title'>" +
+          element.label +
+          "</span><a class='btn-floating halfway-fab waves-effect waves-light red'><i class='material-icons'>add</i></a></div>" +
+          "<div class='card-content'>" +
           element.healthLabels.join(" ") +
           " [ <i>" +
           element.dietLabels.join(" ") +
           " </i>]" +
-          "</h5>"
+          "" +
+          "<p>" +
+          element.ingredientLines.join("\n") +
+          "</p>" +
+          "Total Calories/person: " +
+          calories +
+          "" +
+          "Total Cook/Prep Time: " +
+          element.totalTime +
+          " mins " +
+          "</div>" +
+          "</div></div>"
       );
-      $("#recipe-" + i).append(
-        "<p>" + element.ingredientLines.join("\n") + "</p>"
-      );
-      $("#recipe-" + i).append(
-        "<img class= 'rounded float-left w-25 h-50' src='" +
-          element.image +
-          "'></img>"
-      );
-      $("#recipe-" + i).append(
-        "<h5> Total Calories/person: " + calories + "</h5>"
-      );
-      $("#recipe-" + i).append(
-        "<h5> Total Cook/Prep Time: " + element.totalTime + " mins </h5>"
-      );
+      // $("#recipe-" + i).append(
+      //   "<div class='card-image'><img class= 'rounded float-left w-25 h-50' src='" +
+      //     element.image +
+      //     "'/><span class='card-title'>" +
+      //     element.label +
+      //     "</span></div>"
+      // );
+      // $("#recipe-" + i).append(
+      //   "<div class='card-content'>" +
+      //     element.healthLabels.join(" ") +
+      //     " [ <i>" +
+      //     element.dietLabels.join(" ") +
+      //     " </i>]" +
+      //     "" +
+      //     "<p>" +
+      //     element.ingredientLines.join("\n") +
+      //     "</p>" +
+      //     "Total Calories/person: " +
+      //     calories +
+      //     "" +
+      //     "Total Cook/Prep Time: " +
+      //     element.totalTime +
+      //     " mins " +
+      //     "</div>"
+      // );
+      // $("#recipe-" + i).append(
+      //   "<p>" + element.ingredientLines.join("\n") + "</p>"
+      // );
+
+      // $("#recipe-" + i).append(
+      //   "<h5> Total Calories/person: " + calories + "</h5>"
+      // );
+      // $("#recipe-" + i).append(
+      //   "<h5> Total Cook/Prep Time: " + element.totalTime + " mins </h5>"
+      // );
       $("#recipe-" + i).append(buttonSection);
     });
   });
 }
+
+//   <div class="row">
+//   <div class="col s12 m6">
+//     <div class="card">
+//       <div class="card-image">
+//         <img src="images/sample-1.jpg">
+//         <span class="card-title">Card Title</span>
+//         <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+//       </div>
+//       <div class="card-content">
+//         <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+//       </div>
+//     </div>
+//   </div>
+// </div>
 
 //Search Recipe Button
 $("#searchBtn").on("click", function() {
@@ -258,7 +311,6 @@ $("#searchBtn").on("click", function() {
   numTime = $("#numTime").val();
 
   numResults = $("#numResults").val();
-
 
   //Logic for multiple ingredients
   if (searchTerm === "") {
@@ -285,7 +337,6 @@ $("#searchBtn").on("click", function() {
     newURL = queryURLBase + "&q=" + "+" + searchTerm + "+" + searchTerm1;
 
     runQuery(parseInt(numResults), newURL);
-
   } else if (!(searchTerm === "")) {
     newURL = queryURLBase + "&q=" + searchTerm;
 
@@ -303,11 +354,11 @@ $("#searchBtn").on("click", function() {
   $("#search-bottom-banner").hide();
   $("#search-footer").hide();
 
-  //Show the loading gif 
+  //Show the loading gif
   var showGif = $("<img>");
   showGif.attr("src", "assets/loading.gif");
   $("#loading-gif").append(showGif);
-  //more search 
+  //more search
   //$("#loading-gif").show();
 });
 

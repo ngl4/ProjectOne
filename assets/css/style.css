@@ -6,19 +6,34 @@
  * Made By MaterializeCSS.com
  */
 
-#top, #index-banner, html, .container {
-  font-family:'Cinzel', serif;
-  
-} 
+#top,
+#index-banner,
+html,
+.container {
+  font-family: "Cinzel", serif;
+}
+
+.displaySectionWidth {
+  width: 30%;
+}
+
+.displayButtonSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
 
 h1 {
-  text-shadow: 0.1em 0.1em 0.2em black
+  text-shadow: 0.1em 0.1em 0.2em black;
 }
 
-#displayResults{
-  background-color: black;
+#displayResults {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
-a:hover{
+
+a:hover {
   text-decoration: none;
   color: antiquewhite;
 }
@@ -26,14 +41,13 @@ a:hover{
 nav ul a,
 nav .brand-logo {
   color: #444;
-  font-family:'Cinzel', serif;
+  font-family: "Cinzel", serif;
 }
 
 p {
   line-height: 2rem;
 }
-x
-.sidenav-trigger {
+x .sidenav-trigger {
   color: green;
 }
 
@@ -41,13 +55,13 @@ x
   min-height: 380px;
   line-height: 0;
   height: auto;
-  color: rgba(255,255,255,.9);
+  color: rgba(255, 255, 255, 0.9);
 }
-  .parallax-container .section {
-    width: 100%;
-  }
+.parallax-container .section {
+  width: 100%;
+}
 
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width: 992px) {
   .parallax-container .section {
     position: absolute;
     top: 40%;
@@ -57,7 +71,7 @@ x
   }
 }
 
-@media only screen and (max-width : 600px) {
+@media only screen and (max-width: 600px) {
   #index-banner .section {
     top: 0;
   }
@@ -90,7 +104,7 @@ footer.page-footer {
 }
 
 li {
-  display: block;  
+  display: block;
 }
 /* 
 #footer{
@@ -140,7 +154,6 @@ li a:hover {
 
 /* Media Query to Fix Logo */
 @media only screen and (max-width: 500px) {
-  
   .brand-logo {
     position: fixed;
   }
@@ -160,7 +173,6 @@ li a:hover {
   em {
     font-size: 15px;
   }
-
 }
 
 .carousel {
@@ -185,7 +197,7 @@ li a:hover {
 }
 
 #searchBtn:hover {
-  box-shadow: 10px 10px rgba(0, 0, 0, .5);
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.5);
 }
 
 .carousel button {
@@ -193,5 +205,5 @@ li a:hover {
 }
 
 .carousel p {
-  margin: 5px
+  margin: 5px;
 }
