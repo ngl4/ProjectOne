@@ -17,6 +17,12 @@ html,
   width: 30%;
 }
 
+.displayResultsFlex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .displayButtonSection {
   display: flex;
   flex-direction: column;

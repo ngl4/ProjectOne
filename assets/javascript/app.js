@@ -118,7 +118,8 @@ function runQuery(numSearch, queryURL) {
       //Display Card Section for Each Recipe Result
       var displaySection = $("<div>");
       displaySection.attr("id", "recipe-" + i);
-      displaySection.addClass("row displaySectionWidth");
+      // displaySection.addClass("row displaySectionWidth");
+      displaySection.addClass("card displaySectionWidth");
       $("#displayResults").append(displaySection);
 
       //Display Videos of Each Recipe Result
@@ -211,7 +212,7 @@ function runQuery(numSearch, queryURL) {
       //Attach the Recipe Result content to the appropriate Card Section Div
       // $("#recipe-" + i).append("<h3>" + element.label.toUpperCase() + "</h3>");
       $("#recipe-" + i).append(
-        "<div class='col s12 m6'><div class='card'>" +
+        // "<div class='card'>" +
           "<div class='card-image'><img src='" +
           element.image +
           "'/><span class='card-title'>" +
