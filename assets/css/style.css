@@ -25,8 +25,8 @@ html,
 
 .displayButtonSection {
   display: flex;
-  flex-direction: column;
-  justify-content: start;
+  flex-direction: row;
+  justify-content: center;
 }
 
 h1 {

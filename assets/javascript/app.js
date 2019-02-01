@@ -172,9 +172,10 @@ function runQuery(numSearch, queryURL) {
       //instruction Button
       var instructionBtn = $("<button>");
       instructionBtn.attr("src", element.url);
-      instructionBtn.text("See Instructions");
+      // instructionBtn.text("See Instructions");
+      instructionBtn.append("<i class='material-icons'>format_list_numbered</i>");
       instructionBtn.addClass(
-        "instructionBtn m-3 waves-effect waves-light btn"
+        "instructionBtn m-3 waves-effect waves-light btn m-3"
       );
 
       //Youtube video Button
@@ -182,9 +183,10 @@ function runQuery(numSearch, queryURL) {
       youtubeBtn.attr("name", element.label);
       youtubeBtn.attr("index", i);
       youtubeBtn.attr("data-target", "modal-" + i);
-      youtubeBtn.text("Show Sample Videos");
+      // youtubeBtn.text("Show Sample Videos");
+      youtubeBtn.append("<i class='material-icons'>ondemand_video</i>");
       youtubeBtn.addClass(
-        "videoBtn waves-effect waves-light btn modal-trigger px-0 m-3"
+        "videoBtn waves-effect waves-light btn modal-trigger m-3"
       );
 
       //Save to My Recipes Button
@@ -197,7 +199,8 @@ function runQuery(numSearch, queryURL) {
       saveBtn.attr("data-healthLabel", element.healthLabels);
       saveBtn.attr("data-url", element.url);
       saveBtn.attr("data-totalTime", element.totalTime);
-      saveBtn.text("Save to Collections");
+      // saveBtn.text("Save to Collections");
+      saveBtn.append("<i class='material-icons'>add</i>");
       saveBtn.addClass(
         "saveBtn waves-effect waves-light btn modal-trigger ml-3 m-3"
       );
@@ -217,7 +220,7 @@ function runQuery(numSearch, queryURL) {
           element.image +
           "'/><span class='card-title'>" +
           element.label +
-          "</span><a class='btn-floating halfway-fab waves-effect waves-light red'><i class='material-icons'>add</i></a></div>" +
+          "</span></div>" +
           "<div class='card-content'>" +
           element.healthLabels.join(" ") +
           " [ <i>" +
