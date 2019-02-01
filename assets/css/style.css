@@ -29,6 +29,12 @@ html,
   justify-content: center;
 }
 
+.ingredient-text {
+  font-family: serif;
+  font-weight: lighter;
+}
+
+
 h1 {
   text-shadow: 0.1em 0.1em 0.2em black;
 }

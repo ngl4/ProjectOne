@@ -114,7 +114,6 @@ function runQuery(numSearch, queryURL) {
     //Display Search Results
     chosenSearch.slice(0, numSearch).forEach(function(element, i) {
       var calories = Math.round(element.calories / element.yield);
-
       //Display Card Section for Each Recipe Result
       var displaySection = $("<div>");
       displaySection.attr("id", "recipe-" + i);
@@ -212,8 +211,8 @@ function runQuery(numSearch, queryURL) {
       buttonSection.append(youtubeBtn);
       buttonSection.append(saveBtn);
 
+      var joinedIngredLines = element.ingredientLines.join("<br />");
       //Attach the Recipe Result content to the appropriate Card Section Div
-      // $("#recipe-" + i).append("<h3>" + element.label.toUpperCase() + "</h3>");
       $("#recipe-" + i).append(
         // "<div class='card'>" +
           "<div class='card-image'><img src='" +
@@ -221,78 +220,29 @@ function runQuery(numSearch, queryURL) {
           "'/><span class='card-title'>" +
           element.label +
           "</span></div>" +
-          "<div class='card-content'>" +
-          element.healthLabels.join(" ") +
-          " [ <i>" +
+          "<div class='card-content'>" + 
+          element.healthLabels.join(" ") + 
+          // " [ <i>" +
           element.dietLabels.join(" ") +
-          " </i>]" +
-          "" +
-          "<p>" +
-          element.ingredientLines.join("\n") +
-          "</p>" +
-          "Total Calories/person: " +
+          // " </i>]" +
+          "<hr />" +
+          "<p class='ingredient-text'>" +
+          "<i>" + 
+          joinedIngredLines +
+          " </i>" +
+          "</p>" + 
+          "<hr /> Total Calories/person: " +
           calories +
           "" +
           "Total Cook/Prep Time: " +
           element.totalTime +
           " mins " +
-          "</div>" +
           "</div></div>"
       );
-      // $("#recipe-" + i).append(
-      //   "<div class='card-image'><img class= 'rounded float-left w-25 h-50' src='" +
-      //     element.image +
-      //     "'/><span class='card-title'>" +
-      //     element.label +
-      //     "</span></div>"
-      // );
-      // $("#recipe-" + i).append(
-      //   "<div class='card-content'>" +
-      //     element.healthLabels.join(" ") +
-      //     " [ <i>" +
-      //     element.dietLabels.join(" ") +
-      //     " </i>]" +
-      //     "" +
-      //     "<p>" +
-      //     element.ingredientLines.join("\n") +
-      //     "</p>" +
-      //     "Total Calories/person: " +
-      //     calories +
-      //     "" +
-      //     "Total Cook/Prep Time: " +
-      //     element.totalTime +
-      //     " mins " +
-      //     "</div>"
-      // );
-      // $("#recipe-" + i).append(
-      //   "<p>" + element.ingredientLines.join("\n") + "</p>"
-      // );
-
-      // $("#recipe-" + i).append(
-      //   "<h5> Total Calories/person: " + calories + "</h5>"
-      // );
-      // $("#recipe-" + i).append(
-      //   "<h5> Total Cook/Prep Time: " + element.totalTime + " mins </h5>"
-      // );
       $("#recipe-" + i).append(buttonSection);
     });
   });
 }
-
-//   <div class="row">
-//   <div class="col s12 m6">
-//     <div class="card">
-//       <div class="card-image">
-//         <img src="images/sample-1.jpg">
-//         <span class="card-title">Card Title</span>
-//         <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-//       </div>
-//       <div class="card-content">
-//         <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-//       </div>
-//     </div>
-//   </div>
-// </div>
 
 //Search Recipe Button
 $("#searchBtn").on("click", function() {
